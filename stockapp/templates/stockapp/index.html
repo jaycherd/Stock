@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stock Plotter</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="symbol">Stock Symbol:</label>
+        <input type="text" class="form-control" id="symbol" name="symbol" placeholder="Enter Stock Symbol" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% if plot_url %}
+      <div class="mt-4">
+        <img src="data:image/png;base64,{{ plot_url }}">
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
